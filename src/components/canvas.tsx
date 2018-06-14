@@ -29,6 +29,8 @@ export default class ICanvas extends React.Component<IcanvasProps, IcanvasState>
           onMouseMove={this.move}
           onMouseDown={this.beginDraw}
           onMouseUp={this.endDraw}
+          width="800"
+          height="800"
           id="canvas"
          />
          <button onClick={this.clear}>清空</button>
@@ -46,9 +48,9 @@ export default class ICanvas extends React.Component<IcanvasProps, IcanvasState>
     // this.ctx.stroke
   }
 
-  private beginDraw() {
+  private beginDraw(e: MouseEvent) {
     if (this.ctx) {
-      this.ctx.moveTo(0, 0)
+      this.ctx.moveTo(e.clientX - this.canvasLeft, e.clientY - this.canvasTop)
       this.ctx.beginPath()
       this.ctx.strokeStyle = this.props.color
     }
@@ -84,7 +86,7 @@ export default class ICanvas extends React.Component<IcanvasProps, IcanvasState>
       // console.log(x, y)
     } else if (this.ctx && !this.isDrawing) {
       this.ctx.lineTo(x, y)
-      this.ctx.stroke()
+      // this.ctx.stroke()
       // console.log(x, y)
       this.ctx.closePath()
     }
