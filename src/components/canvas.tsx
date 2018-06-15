@@ -33,12 +33,12 @@ export default class ICanvas extends React.Component<IcanvasProps, IcanvasState>
           height="800"
           id="canvas"
          />
-         <button onClick={this.clear}>清空</button>
+         {/* <button onClick={this.clear}>清空</button> */}
 
       </div>
     )
   }
-
+  
   /**
    * CompomentDid
    */
@@ -47,7 +47,13 @@ export default class ICanvas extends React.Component<IcanvasProps, IcanvasState>
     this.ctx = this.canvas.getContext('2d')
     // this.ctx.stroke
   }
+  
+  public clear() {
+    if (this.ctx && this.canvas) {
+      this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight)
 
+    }
+  }
   private beginDraw(e: MouseEvent) {
     if (this.ctx) {
       this.ctx.moveTo(e.clientX - this.canvasLeft, e.clientY - this.canvasTop)
@@ -92,12 +98,6 @@ export default class ICanvas extends React.Component<IcanvasProps, IcanvasState>
     }
   }
 
-  private clear() {
-    if (this.ctx && this.canvas) {
-      this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight)
-
-    }
-  }
 }
 
 interface IcanvasState {

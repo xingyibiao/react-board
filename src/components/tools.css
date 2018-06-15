@@ -1,0 +1,13 @@
+.toolHeader {
+  height: 60px;
+  vertical-align: middle; }
+  .toolHeader .colorBtn {
+    width: 40px;
+    height: 20px; }
+  .toolHeader .ereaBtn {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("../assets/erea.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px; }
